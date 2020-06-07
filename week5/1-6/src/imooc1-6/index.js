@@ -17,11 +17,13 @@ router.post('/user', ctx => {
             code: 404,
             msg: 'name和email不能为空'
         }
+        ctx.response.status = 404
     } else if (!header.role || header.role !== 'admin') {
         ctx.body = {
             code: 401,
             msg: 'unauthorized post'
         }
+        ctx.response.status = 401
     } else {
         ctx.body = {
             code: 200,
